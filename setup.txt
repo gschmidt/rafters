@@ -1,0 +1,29 @@
+# On the Pi
+
+## Install pyosc
+cd ~/co
+git clone git@github.com:ptone/pyosc.git
+cd pyosc
+sudo ./setup.py install
+
+## Install our server
+cd ~/co
+git clone git@github.com:gschmidt/rafters.git
+XXX modify startup files to run leds.py on startup
+
+
+# On the Teensy
+[XXX]
+
+# On your phone
+
+Install TouchOSC. Configure as follows:
+- Host: the Pi's hostname or IP
+- Port (outgoing): 7000
+- Port (incoming): 9000
+[These ports can be changed in leds.py]
+XXX sync Rafters.touchosc to the phone using the Mac software
+
+
+# Hardware/wiring guide
+[XXX]
