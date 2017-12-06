@@ -12,7 +12,6 @@ send_port = 9000
 sat_ = .75
 br_ = .9999
 hueWidth_ = .33
-speed_ = 30
 
 # OSC
 
@@ -42,12 +41,6 @@ def sat_handler(addr, tags, stuff, source):
   sat_ = stuff[0]
   return None
 
-def speed_handler(addr, tags, stuff, source):
-  global speed_
-  speed_ = 2.5 / (stuff[0] + .01)
-  print speed_
-  return None
-
 def width_handler(addr, tags, stuff, source):
   global hueWidth_
   hueWidth_ = stuff[0]
@@ -55,8 +48,7 @@ def width_handler(addr, tags, stuff, source):
 
 osc.addMsgHandler("/1/brightness", br_handler)
 osc.addMsgHandler("/1/fader1", sat_handler)
-osc.addMsgHandler("/1/fader2", speed_handler)
-osc.addMsgHandler("/1/fader3", width_handler)
+osc.addMsgHandler("/1/fader2", width_handler)
 osc.addMsgHandler("/2/test1", test_handler)
 osc.addMsgHandler("default", default_handler)
 
@@ -94,8 +86,7 @@ try:
   while 1: 
     ser.write(bytearray([0]))
     now = time.time()
-    hueCenter = (hueCenter + (now - lastTime) / speed_) % 1.0
-    lastTime = now
+    hueCenter = (hueCenter + (now - lastTime) / 30) % 1.0
 
     hueStart = hueCenter - hueWidth_ / 2 + 1.0
     hueEnd = hueCenter + hueWidth_ / 2
