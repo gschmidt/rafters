@@ -12,8 +12,18 @@ git clone git@github.com:gschmidt/rafters.git
 XXX modify startup files to run leds.py on startup
 
 
-# On the Teensy
-[XXX]
+# For the Teensy
+
+On your laptop, set up Teensyduino following these instructions:
+- https://www.pjrc.com/teensy/td_download.html
+
+Open serial-led-driver.ino in the Arduino IDE
+
+Connect the Teensy to your laptop using an appropriate USB cable
+
+Press the "Upload" button (if using for the first time, you may need to
+first press Verify and then the button on the Teensy and then Upload, or
+something like that).
 
 # On your phone
 
