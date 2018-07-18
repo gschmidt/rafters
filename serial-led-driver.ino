@@ -1,11 +1,17 @@
 #include <OctoWS2811.h>
 
-const int ledsPerStrip = 240;
+// A 5 meter strip (at 60 LEDs/meter) has 300 LEDs.
+// If the strip is actually RGBW, then that looks like 400 LEDs to OctoWS2811.
+const int ledsPerStrip = 400;
 
 DMAMEM int displayMemory[ledsPerStrip*6];
 int drawingMemory[ledsPerStrip*6];
 
-const int config = WS2811_GRB | WS2811_800kHz;
+// Uncomment this one for typical RGB strips
+//const int config = WS2811_GRB | WS2811_800kHz;
+
+// Uncomment this one for SK2812 RGBW strips
+// const int config = WS2811_RGB | WS2811_800kHz;
 
 OctoWS2811 leds(ledsPerStrip, displayMemory, drawingMemory, config);
 
